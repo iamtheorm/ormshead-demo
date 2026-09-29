@@ -1,4 +1,41 @@
-export default function Home() {
+import { draftMode } from "next/headers";
+import { StoryblokStory } from "@storyblok/react/rsc";
+
+async function fetchHomePage() {
+  try {
+    const { isEnabled } = await draftMode();
+    const version = isEnabled ? "draft" : "published";
+
+    const res = await fetch(
+      `https://api.storyblok.com/v2/cdn/stories/home?version=${version}&token=${process.env.NEXT_PUBLIC_STORYBLOK_TOKEN}`,
+      { 
+        next: { tags: ["storyblok-home"] } 
+      }
+    );
+
+    if (!res.ok) {
+      return null;
+    }
+
+    return await res.json();
+  } catch (error) {
+    return null;
+  }
+}
+
+export default async function Home() {
+  const data = await fetchHomePage();
+
+  // If Storyblok data is successfully fetched, render the headless CMS implementation
+  if (data?.story) {
+    return (
+      <div className="max-w-5xl mx-auto py-12">
+        <StoryblokStory story={data.story} />
+      </div>
+    );
+  }
+
+  // Fallback to the hardcoded static demo
   return (
     <>
       <section className="hero-section" id="home">
