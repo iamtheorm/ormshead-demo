@@ -56,7 +56,7 @@ export default function Navigation({ items }: { items: NavigationItem[] }) {
   if (!items || items.length === 0) return null;
 
   return (
-    <ul ref={menuRef} className="nav-links">
+    <ul ref={menuRef} className="flex gap-6 items-center text-sm font-medium text-gray-600 dark:text-gray-300">
       {items.map((item) => {
         
         // Render a flat navigation link
@@ -70,6 +70,7 @@ export default function Navigation({ items }: { items: NavigationItem[] }) {
               <Link 
                 href={href || "#"} 
                 target={item.link.target || "_self"}
+                className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
               >
                 {item.label}
               </Link>
@@ -82,21 +83,19 @@ export default function Navigation({ items }: { items: NavigationItem[] }) {
           const isOpen = openDropdown === item._uid;
 
           return (
-            <li key={item._uid} {...storyblokEditable(item)} style={{ position: 'relative' }}>
+            <li key={item._uid} {...storyblokEditable(item)} className="relative group">
               <button 
                 aria-haspopup="menu" 
                 aria-expanded={isOpen}
                 onClick={() => setOpenDropdown(isOpen ? null : item._uid)}
+                className="flex items-center gap-1 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
               >
                 {item.label}
                 <svg 
                   width="12" height="12" viewBox="0 0 24 24" 
                   fill="none" stroke="currentColor" strokeWidth="2.5" 
                   strokeLinecap="round" strokeLinejoin="round"
-                  style={{ 
-                    transition: 'transform 0.2s ease',
-                    transform: isOpen ? 'rotate(180deg)' : 'rotate(0deg)' 
-                  }}
+                  className={`transition-transform duration-200 ${isOpen ? 'rotate-180' : 'rotate-0'}`}
                 >
                   <path d="M6 9l6 6 6-6" />
                 </svg>
