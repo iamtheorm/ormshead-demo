@@ -26,7 +26,6 @@ async function fetchHomePage() {
 export default async function Home() {
   const data = await fetchHomePage();
 
-  // If Storyblok data is successfully fetched, render the headless CMS implementation
   if (data?.story) {
     return (
       <div className="max-w-5xl mx-auto py-12">
@@ -35,66 +34,181 @@ export default async function Home() {
     );
   }
 
-  // Fallback to the hardcoded static demo
   return (
     <>
+      {/* ===== HERO SECTION ===== */}
       <section className="hero-section" id="home">
-        <div className="inline-block px-4 py-1.5 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 text-sm font-semibold mb-4">
-          Welcome to Orm'shead
-        </div>
-        <h1 className="text-4xl md:text-6xl font-extrabold text-gray-900 dark:text-white leading-tight">
-          Crafting Digital <span className="text-blue-600">Masterpieces</span>
-        </h1>
-        <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl">
-          We build robust, scalable, and visually stunning web applications that elevate your brand and drive results.
-        </p>
-        <div className="flex gap-4 mt-8">
-          <a href="#contact" className="px-6 py-3 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 shadow-lg shadow-blue-500/30 transition">
-            Start a Project
-          </a>
-          <a href="#services" className="px-6 py-3 bg-white dark:bg-gray-800 text-gray-900 dark:text-white font-semibold rounded-lg border border-gray-200 dark:border-gray-700 hover:border-gray-300 dark:hover:border-gray-600 transition">
-            Our Services
-          </a>
+        <div className="hero-inner">
+          <div>
+            <div className="hero-badge">
+              <span></span>
+              Now with Visual Editor
+            </div>
+            <h1 className="hero-title">
+              Create content that <span className="gradient-text">moves people</span>
+            </h1>
+            <p className="hero-description">
+              Build blazing-fast websites with a headless CMS that gives your content editors full visual control — 
+              and your developers complete freedom.
+            </p>
+            <div className="hero-actions">
+              <a href="#contact" className="btn-primary">
+                Start Free Trial
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M5 12h14M12 5l7 7-7 7" />
+                </svg>
+              </a>
+              <a href="#features" className="btn-secondary">
+                Explore Features
+              </a>
+            </div>
+          </div>
+
+          <div className="hero-visual">
+            <div className="hero-card">
+              <div className="stats-grid">
+                <div className="stat-item">
+                  <div className="stat-number">99.9%</div>
+                  <div className="stat-label">Uptime SLA</div>
+                </div>
+                <div className="stat-item">
+                  <div className="stat-number">3ms</div>
+                  <div className="stat-label">Avg Response</div>
+                </div>
+                <div className="stat-item">
+                  <div className="stat-number">200+</div>
+                  <div className="stat-label">Integrations</div>
+                </div>
+                <div className="stat-item">
+                  <div className="stat-number">50K+</div>
+                  <div className="stat-label">Happy Users</div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
-      <section className="features-section" id="services">
-        <div className="max-w-5xl mx-auto">
-          <div className="text-center mb-16">
-            <span className="text-blue-600 font-bold tracking-wider uppercase text-sm">What We Do</span>
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mt-2">Comprehensive Digital Solutions</h2>
+      {/* ===== FEATURES SECTION ===== */}
+      <section className="features-section" id="features">
+        <div className="section-inner">
+          <div className="section-header">
+            <span className="section-label">Why Choose Us</span>
+            <h2 className="section-title">Everything you need to build amazing experiences</h2>
+            <p className="section-subtitle">
+              A complete toolkit for content-driven websites, from editing to deployment.
+            </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="features-grid">
             <div className="feature-card">
-              <div className="w-12 h-12 bg-blue-100 dark:bg-blue-900/40 rounded-lg flex items-center justify-center text-blue-600 text-2xl mb-6">💻</div>
-              <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3">Custom Development</h3>
-              <p className="text-gray-600 dark:text-gray-400">Tailor-made web applications built with cutting-edge technologies for optimal performance and scalability.</p>
-            </div>
-            
-            <div className="feature-card">
-              <div className="w-12 h-12 bg-purple-100 dark:bg-purple-900/40 rounded-lg flex items-center justify-center text-purple-600 text-2xl mb-6">🎨</div>
-              <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3">UI/UX Design</h3>
-              <p className="text-gray-600 dark:text-gray-400">User-centric interfaces that are not just beautiful, but intuitive and engineered for engagement.</p>
+              <div className="feature-icon">🎨</div>
+              <h3>Visual Editor</h3>
+              <p>Edit content inline with a real-time preview. What you see is truly what you get — no guesswork required.</p>
             </div>
 
             <div className="feature-card">
-              <div className="w-12 h-12 bg-green-100 dark:bg-green-900/40 rounded-lg flex items-center justify-center text-green-600 text-2xl mb-6">🚀</div>
-              <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3">Cloud Architecture</h3>
-              <p className="text-gray-600 dark:text-gray-400">Robust cloud infrastructure setups ensuring your applications are always available, secure, and fast.</p>
+              <div className="feature-icon">⚡</div>
+              <h3>Lightning Fast CDN</h3>
+              <p>Content delivered from 250+ global edge locations. Your pages load in milliseconds, everywhere.</p>
+            </div>
+
+            <div className="feature-card">
+              <div className="feature-icon">🔒</div>
+              <h3>Enterprise Security</h3>
+              <p>SOC 2 compliant with role-based access control, SSO, and full audit logging out of the box.</p>
+            </div>
+
+            <div className="feature-card">
+              <div className="feature-icon">🧩</div>
+              <h3>Modular Components</h3>
+              <p>Build reusable content blocks that editors can mix and match to compose any page layout.</p>
+            </div>
+
+            <div className="feature-card">
+              <div className="feature-icon">🌍</div>
+              <h3>Multi-Language</h3>
+              <p>Manage translations for 100+ languages from a single dashboard. Go global without the headache.</p>
+            </div>
+
+            <div className="feature-card">
+              <div className="feature-icon">🔌</div>
+              <h3>API-First</h3>
+              <p>RESTful and GraphQL APIs let you deliver content to any frontend, mobile app, or IoT device.</p>
             </div>
           </div>
         </div>
       </section>
 
-      <section className="py-24 px-6 md:px-12 max-w-5xl mx-auto text-center" id="contact">
-        <div className="bg-gradient-to-r from-blue-600 to-indigo-600 rounded-3xl p-10 md:p-16 text-white shadow-xl shadow-blue-500/20">
-          <h2 className="text-3xl md:text-5xl font-bold mb-6">Ready to bring your vision to life?</h2>
-          <p className="text-blue-100 text-lg mb-10 max-w-2xl mx-auto">
-            Partner with Orm'shead to transform your ideas into reality. Let's discuss your next big project.
+      {/* ===== TESTIMONIALS SECTION ===== */}
+      <section className="testimonials-section" id="testimonials">
+        <div className="section-inner">
+          <div className="section-header">
+            <span className="section-label">Testimonials</span>
+            <h2 className="section-title">Loved by teams worldwide</h2>
+            <p className="section-subtitle">
+              See why thousands of companies trust us to power their digital experiences.
+            </p>
+          </div>
+
+          <div className="testimonials-grid">
+            <div className="testimonial-card">
+              <div className="testimonial-stars">★★★★★</div>
+              <p className="testimonial-text">
+                &ldquo;The visual editor completely transformed our content workflow. Our marketing team can now publish pages in minutes instead of days.&rdquo;
+              </p>
+              <div className="testimonial-author">
+                <div className="testimonial-avatar">SK</div>
+                <div className="testimonial-meta">
+                  <strong>Sarah Kim</strong>
+                  <span>Head of Marketing, TechFlow</span>
+                </div>
+              </div>
+            </div>
+
+            <div className="testimonial-card">
+              <div className="testimonial-stars">★★★★★</div>
+              <p className="testimonial-text">
+                &ldquo;As a developer, I love the flexibility. We can use any frontend framework and the API integration is seamless and well-documented.&rdquo;
+              </p>
+              <div className="testimonial-author">
+                <div className="testimonial-avatar">MR</div>
+                <div className="testimonial-meta">
+                  <strong>Marcus Rodriguez</strong>
+                  <span>Lead Developer, CloudBase</span>
+                </div>
+              </div>
+            </div>
+
+            <div className="testimonial-card">
+              <div className="testimonial-stars">★★★★★</div>
+              <p className="testimonial-text">
+                &ldquo;We migrated from WordPress and saw a 3× improvement in page load times. Our SEO rankings jumped within weeks.&rdquo;
+              </p>
+              <div className="testimonial-author">
+                <div className="testimonial-avatar">AL</div>
+                <div className="testimonial-meta">
+                  <strong>Aisha Lawal</strong>
+                  <span>CTO, GreenPath Digital</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ===== CTA SECTION ===== */}
+      <section className="cta-section" id="contact">
+        <div className="cta-card">
+          <h2>Ready to transform your content?</h2>
+          <p>
+            Join 50,000+ creators and developers building the next generation of digital experiences.
           </p>
-          <a href="mailto:hello@ormshead.demo" className="inline-block px-8 py-4 bg-white text-blue-600 font-bold rounded-lg hover:shadow-lg transition">
-            Contact Us Today
+          <a href="#" className="btn-white">
+            Get Started Free
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M5 12h14M12 5l7 7-7 7" />
+            </svg>
           </a>
         </div>
       </section>

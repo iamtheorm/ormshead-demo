@@ -56,7 +56,7 @@ export default function Navigation({ items }: { items: NavigationItem[] }) {
   if (!items || items.length === 0) return null;
 
   return (
-    <ul ref={menuRef} className="flex gap-6 items-center text-sm font-medium text-gray-600 dark:text-gray-300">
+    <ul ref={menuRef} className="nav-links">
       {items.map((item) => {
         
         // Render a flat navigation link
@@ -70,7 +70,6 @@ export default function Navigation({ items }: { items: NavigationItem[] }) {
               <Link 
                 href={href || "#"} 
                 target={item.link.target || "_self"}
-                className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
               >
                 {item.label}
               </Link>
@@ -88,7 +87,6 @@ export default function Navigation({ items }: { items: NavigationItem[] }) {
                 aria-haspopup="menu" 
                 aria-expanded={isOpen}
                 onClick={() => setOpenDropdown(isOpen ? null : item._uid)}
-                className="flex items-center gap-1 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
               >
                 {item.label}
                 <svg 
