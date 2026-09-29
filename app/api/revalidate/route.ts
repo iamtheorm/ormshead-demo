@@ -7,8 +7,8 @@ export async function POST(request: Request) {
   // Verify the webhook payload/secret from Storyblok here
   
   if (payload.action === "published" || payload.action === "unpublished") {
-    revalidateTag("storyblok-global");
-    revalidateTag("storyblok-home");
+    revalidateTag("storyblok-global", "max");
+    revalidateTag("storyblok-home", "max");
     return NextResponse.json({ revalidated: true, now: Date.now() });
   }
 
