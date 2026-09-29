@@ -8,9 +8,9 @@ export async function GET(request: Request) {
   const draft = await draftMode();
   draft.enable();
   
-  if (slug) {
+  if (slug && !slug.startsWith("settings/")) {
     redirect(`/${slug !== "home" ? slug : ""}`);
+  } else {
+    redirect("/");
   }
-
-  return new Response("Draft mode enabled");
 }
